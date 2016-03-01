@@ -80,6 +80,10 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
         <p>
            <img src="<?php echo UixContact::plug_directory(); ?>helper/img/menu.jpg" alt=""> <img src="<?php echo UixContact::plug_directory(); ?>helper/img/add-page.jpg" alt="">
         </p> 
+        
+         <p>
+           <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In your dashboard go to Appearance and select Menus. You’ll be able to add items to the menu. On the left you have your contact pages.', 'uix-contact' ); ?>
+        </p>        
 
 
         
