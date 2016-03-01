@@ -67,6 +67,8 @@ There are three different ways you can add the Uix Contact widget to your site's
   (3) Create a Custom Page - Create a new WordPress file or edit an existing one. 
   
       Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Save the page and hit "Preview" to see how it looks. ( You should specify the template name, in this case I used "Uix Contact". The "Template Name: Uix Contact" tells WordPress that this will be a custom page template. )
+      
+      In your dashboard go to Appearance and select Menus. You’ll be able to add items to the menu. On the left you have your contact pages.
 	  
    
 
