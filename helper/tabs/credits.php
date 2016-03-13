@@ -13,7 +13,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'credits' ) {
         <p>
         
         <ul>
-            <li><a href="https://github.com/jeremyclark13/automatic-theme-plugin-update" target="_blank" rel="nofollow">Automatic Theme & Plugin Updater for Self-Hosted Themes/Plugins</a></li>
+            <li><a href="http://w-shadow.com" target="_blank" rel="nofollow">Plugin Update Checker Library</a></li>
             <li><a href="http://kirki.org/" target="_blank" rel="nofollow">Kirki</a></li>
             <li><a href="https://github.com/PHPMailer/" target="_blank" rel="nofollow">PHPMailer</a></li>
             <li><a href="http://jqueryvalidation.org/" target="_blank" rel="nofollow">Form validation</a></li>

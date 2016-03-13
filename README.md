@@ -45,7 +45,7 @@ Initial Release.
 
 #####I would like to give special thanks to credits. The following is a guide to the list of credits for this plugin:
 
-- [Automatic Theme & Plugin Updater for Self-Hosted Themes/Plugins](https://github.com/jeremyclark13/automatic-theme-plugin-update)
+- [Plugin Update Checker Library](http://w-shadow.com)
 - [Kirki](http://kirki.org/)
 - [PHPMailer](https://github.com/PHPMailer/)
 - [Form validation](http://jqueryvalidation.org/)

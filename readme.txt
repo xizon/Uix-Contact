@@ -21,7 +21,7 @@ By default, the theme to use built-in WordPress comments form in lieu of a conta
 
 
 = Credits and Special Thanks =
- - Automatic Theme & Plugin Updater for Self-Hosted Themes/Plugins (https://github.com/jeremyclark13/automatic-theme-plugin-update)
+ - Plugin Update Checker Library (http://w-shadow.com)
  - Kirki (http://kirki.org/)
  - PHPMailer (https://github.com/PHPMailer/)
  - Form validation (http://jqueryvalidation.org/)
