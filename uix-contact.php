@@ -14,7 +14,8 @@ License: GPLv2 or later
 class UixContact {
 	
 	const PREFIX = 'uix';
-	const CUSPAGE = 'uix-contact-custom-submenu-page';
+	const HELPER = 'uix-contact-custom-submenu-page';
+	const NOTICEID = 'uix-contact-helper-tip';
 
 	
 	/**
@@ -31,8 +32,8 @@ class UixContact {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) ); 
 		add_action( 'current_screen', array( __CLASS__, 'do_register_shortcodes' ) );
+		add_action( 'current_screen', array( __CLASS__, 'usage_notice' ) );
 		add_action( 'admin_init', array( __CLASS__, 'check_update' ) );
-		add_action( 'admin_init', array( __CLASS__, 'templates' ) );
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
 		add_action( 'admin_init', array( __CLASS__, 'load_helper' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
@@ -56,7 +57,12 @@ class UixContact {
 	
 		
 		//Main stylesheets and scripts to Front-End
-		wp_enqueue_style( self::PREFIX . '-contact-frontend-style', get_template_directory_uri() .'/uix-contact-style.css', false, self::ver(), 'all');
+		if( !self::tempfile_exists() ) {
+			wp_enqueue_style( self::PREFIX . '-contact-frontend-style', self::plug_directory() .'theme_templates/uix-contact-style.css', false, self::ver(), 'all');
+		} else {
+			wp_enqueue_style( self::PREFIX . '-contact-frontend-style', get_template_directory_uri() .'/uix-contact-style.css', false, self::ver(), 'all');
+		}
+		
 			
 
 	}
@@ -103,6 +109,22 @@ class UixContact {
 
 	}
 	
+	/*
+	 * The function finds the position of the first occurrence of a string inside another string.
+	 *
+	 * As strpos may return either FALSE (substring absent) or 0 (substring at start of string), strict versus loose equivalency operators must be used very carefully.
+	 *
+	 */
+	public static function inc_str( $str, $incstr ) {
+	
+		if ( mb_strlen( strpos( $str, $incstr ), 'UTF8' ) > 0 ) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 	
 	
 	/*
@@ -118,7 +140,7 @@ class UixContact {
 			__( 'Uix Contact Settings', 'uix-contact' ),
 			__( 'Uix Contact', 'uix-contact' ),
 			'manage_options',
-			self::CUSPAGE,
+			self::HELPER,
 			'uix_contact_options_page',
 			'dashicons-email',
 			'81.' . rand( 0, 99 )
@@ -180,7 +202,7 @@ class UixContact {
 	 */
 	public static function actions_links( $links ) {
 		$links[] = '<a href="' . admin_url( "customize.php" ) . '">' . __( 'Settings', 'uix-contact' ) . '</a>';
-		$links[] = '<a href="' . admin_url( "admin.php?page=".self::CUSPAGE."&tab=usage" ) . '">' . __( 'How to use?', 'uix-contact' ) . '</a>';
+		$links[] = '<a href="' . admin_url( "admin.php?page=".self::HELPER."&tab=usage" ) . '">' . __( 'How to use?', 'uix-contact' ) . '</a>';
 		return $links;
 	}
 	
@@ -195,7 +217,7 @@ class UixContact {
 		  //Check if screen’s ID, base, post type, and taxonomy, among other data points
 		  $currentScreen = get_current_screen();
 	
-		  if( $currentScreen->base === "post" || mb_strlen( strpos( $currentScreen->base, '_page_' ), 'UTF8' ) > 0 ) {
+		  if( $currentScreen->base === "post" || self::inc_str( $currentScreen->base, '_page_' ) ) {
 			
 				require_once 'shortcodes/backstage-init.php';
 		
@@ -248,8 +270,92 @@ class UixContact {
 	}	
 	
 
+	/*
+	 *  Add admin one-time notifications
+	 *
+	 *
+	 */
+	public static function usage_notice() {
+		
+		
+		  //Check if screen’s ID, base, post type, and taxonomy, among other data points
+		  $currentScreen = get_current_screen();
+		  
+		 
+		  if( $currentScreen->id == 'page' ) {
+			  add_action( 'admin_notices', array( __CLASS__, 'usage_notice_app' ) );
+			  add_action( 'admin_notices', array( __CLASS__, 'template_notice_required' ) );
+		  }
+		
+	
+	}	
+	
+	public static function usage_notice_app() {
+		
+		global $current_user ;
+		$user_id = $current_user->ID;
+		
+		/* Check that the user hasn't already clicked to ignore the message */
+		if ( ! get_user_meta( $user_id, self::NOTICEID ) ) {
+			echo '<div class="updated"><p>
+				'.__( 'Do you want to create a custom contact page?  Learn how to do it.', 'uix-contact' ).'
+				<a href="' . admin_url( "admin.php?page=".self::HELPER."&tab=usage" ) . '">' . __( 'How to use?', 'uix-contact' ) . '</a>
+				 | 
+			';
+			printf( __( '<a href="%1$s">Hide Notice</a>' ), '?post_type='.self::get_slug().'&'.self::NOTICEID.'=0');
+			
+			echo "</p></div>";
+		}
+	
+	}	
+	
+	public static function template_notice_required() {
+		
+		if( !self::tempfile_exists() ) {
+			echo '
+				<div class="error notice">
+					<p>' . __( '<strong>You need to create Uix Contact template files in your templates directory. You can create the files on the WordPress admin panel.</strong>', 'uix-contact' ) . ' <a class="button button-primary" href="' . admin_url( "admin.php?page=".self::HELPER."&tab=temp" ) . '">' . __( 'Create now!', 'uix-contact' ) . '</a><br>' . __( 'As a workaround you can use FTP, access the Uix Contact template files path <code>/wp-content/plugins/uix-contact/theme_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-contact' ) . '</p>
+				</div>
+			';
+	
+		}
+	
+	}	
 
 	
+	public static function nag_ignore() {
+		    global $current_user;
+			$user_id = $current_user->ID;
+			
+			/* If user clicks to ignore the notice, add that to their user meta */
+			if ( isset( $_GET[ self::NOTICEID ]) && '0' == $_GET[ self::NOTICEID ] ) {
+				 add_user_meta( $user_id, self::NOTICEID, 'true', true);
+
+				if ( wp_get_referer() ) {
+					/* Redirects user to where they were before */
+					wp_safe_redirect( wp_get_referer() );
+				} else {
+					/* This will never happen, I can almost gurantee it, but we should still have it just in case*/
+					wp_safe_redirect( home_url() );
+				}
+		    }
+	}
+	
+	/*
+	 * Checks whether a template file or directory exists
+	 *
+	 *
+	 */
+	public static function tempfile_exists() {
+
+	      if( !file_exists( get_stylesheet_directory() . '/uix-contact.php' ) ) {
+			  return false;
+		  } else {
+			  return true;
+		  }
+
+	}
+		
 	
 	/*
 	 * Callback the plugin directory
@@ -266,46 +372,137 @@ class UixContact {
 	
 	
 	/*
-	 * Move template files to your theme directory
+	 * Copy template files to your theme directory
 	 *
 	 *
 	 */
-	public static function templates() {
-		
-		
-		$filenames = array();
-		$filepath = WP_PLUGIN_DIR .'/'.self::get_slug(). '/theme_templates/';
-		$themepath = get_stylesheet_directory() . '/';
-
-		foreach ( glob( dirname(__FILE__). "/theme_templates/*") as $file ) {
-			$filenames[] = str_replace( dirname(__FILE__). "/theme_templates/", '', $file );
-		}	
-		
 	
-		self::init_filesystem();
-		global $wp_filesystem;
-
-		foreach ( $filenames as $filename ) {
-			if ( ! file_exists( $themepath . $filename ) ) {
-				$filecontent = $wp_filesystem->get_contents( $filepath . $filename );
-				$wp_filesystem->put_contents(  $themepath . $filename, $filecontent, FS_CHMOD_FILE);
-			} 
-		}
+	public static function templates( $nonceaction, $nonce ){
 		
-	}
+		  global $wp_filesystem;
+			
+		  $filenames = array();
+		  $filepath = WP_PLUGIN_DIR .'/'.self::get_slug(). '/theme_templates/';
+		  $themepath = get_stylesheet_directory() . '/';
+		  $fileable = true;
+
+		
+		  $url = wp_nonce_url( $nonce, $nonceaction );
+		
+		  $contentdir = $filepath; 
+		  
+		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir, '' ) ) {
 	
+				foreach ( glob( dirname(__FILE__). "/theme_templates/*") as $file ) {
+					$filenames[] = str_replace( dirname(__FILE__). "/theme_templates/", '', $file );
+				}	
+		
+				foreach ( $filenames as $filename ) {
+					
+					if ( ! file_exists( $themepath . $filename ) ) {
+						
+						$filecontent = $wp_filesystem->get_contents( $filepath . $filename );
+						$wp_filesystem->put_contents(  $themepath . $filename, $filecontent, FS_CHMOD_FILE );
+			
+					} 
+				}
+		
+				return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-contact' );
+				
+		  } 
+	}	 
+
 
 	/**
 	 * Initialize the WP_Filesystem
+	 * 
+	 * Example:
+	 
+            $output = "";
+			$wpnonce_url = 'edit.php?post_type='.UixContact::get_slug().'&page='.UixContact::HELPER;
+			$wpnonce_action = 'temp-filesystem-nonce';
+
+            if ( !empty( $_POST ) ) {
+				
+				
+                  $output = UixContact::wpfilesystem_write_file( $wpnonce_action, $wpnonce_url, 'helper/tabs/', '1.txt', 'This is test.' );
+				  echo $output;
+			
+            } else {
+				
+				wp_nonce_field( $wpnonce_action );
+				echo '<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="'.__( 'Click This Button to Copy Files', 'uix-contact' ).'"  /></p>';
+				
+			}
 	 *
 	 */
-	public static function init_filesystem() {
-		global $wp_filesystem;
-		if ( empty( $wp_filesystem ) ) {
-			require_once ( ABSPATH . '/wp-admin/includes/file.php' );
-			WP_Filesystem();
-		}
+	public static function wpfilesystem_connect_fs( $url, $method, $context, $fields = null) {
+		  global $wp_filesystem;
+		  if ( false === ( $credentials = request_filesystem_credentials( $url, $method, false, $context, $fields) ) ) {
+			return false;
+		  }
+		
+		  //check if credentials are correct or not.
+		  if( !WP_Filesystem( $credentials ) ) {
+			request_filesystem_credentials( $url, $method, true, $context);
+			return false;
+		  }
+		
+		  return true;
 	}
+	
+	public static function wpfilesystem_write_file( $nonceaction, $nonce, $path, $pathname, $text ){
+		  global $wp_filesystem;
+		  
+		
+		  $url = wp_nonce_url( $nonce, $nonceaction );
+		
+		  $contentdir = trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() ).$path; 
+		  
+		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir, '' ) ) {
+			  
+				$dir = $wp_filesystem->find_folder( $contentdir );
+				$file = trailingslashit( $dir ) . $pathname;
+				$wp_filesystem->put_contents( $file, $text, FS_CHMOD_FILE );
+			
+				return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-contact' );
+				
+		  } 
+	}	
+	
+	 
+	public static function wpfilesystem_read_file( $nonceaction, $nonce, $path, $pathname, $type = 'plugin' ){
+		  global $wp_filesystem;
+		
+		  $url = wp_nonce_url( $nonce, $nonceaction );
+	
+		  if ( $type == 'plugin' ) {
+			  $contentdir = trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() ).$path; 
+		  } 
+		  if ( $type == 'theme' ) {
+			  $contentdir = trailingslashit( get_template_directory() ).$path; 
+		  } 	  
+		
+		  
+		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir ) ) {
+			  
+				$dir = $wp_filesystem->find_folder( $contentdir );
+				$file = trailingslashit( $dir ) . $pathname;
+				
+				
+				if( $wp_filesystem->exists( $file ) ) {
+					
+				    return $wp_filesystem->get_contents( $file );
+	
+				} else {
+					return '';
+				}
+		
+		
+		  } 
+	}	 
+	
+	
 	
 
 	/*

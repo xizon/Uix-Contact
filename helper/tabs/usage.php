@@ -8,14 +8,26 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'usage' ) {
 
 
         <p>
-           <?php _e( '1. After activating your theme, you can see a prompt pointed out as absolutely critical. Go to <strong>"Appearance -> Install Plugins"</strong>.
-Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)', 'uix-contact' ); ?>
+           <?php _e( '<h4 class="uix-bg-custom-title">1. After activating your theme, you can see a prompt pointed out as absolutely critical. Go to <strong>"Appearance -> Install Plugins"</strong>.
+Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)</h4>', 'uix-contact' ); ?>
         </p>  
         <p>
            <img src="<?php echo UixContact::plug_directory(); ?>helper/img/plug.jpg" alt="">
         </p> 
         <p>
-           <?php _e( '2. Please check if you have the 2 template files <code>"uix-contact-style.css"</code>, <code>"uix-contact.php"</code>, <code>"partials-uix_contact_form_smtp.php"</code> and <code>"partials-uix_contact_form_comments.php"</code> in your templates directory. If you can\'t find these files, then just copy them from the directory "/wp-content/plugins/uix-contact/theme_templates/" to your templates directory.', 'uix-contact' ); ?>
+           <?php _e( '<h4 class="uix-bg-custom-title">2. You need to create Uix Contact template files in your templates directory. You can create the files on the WordPress admin panel.</h4>', 'uix-contact' ); ?>
+     
+        </p>  
+        <p>
+           &nbsp;&nbsp;&nbsp;&nbsp;<a class="button button-primary" href="<?php echo admin_url( "admin.php?page=".UixContact::HELPER."&tab=temp" ); ?>"><?php _e( 'Create now!', 'uix-contact' ); ?></a>
+     
+        </p>  
+         <p>
+           <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;As a workaround you can use FTP, access the Uix Contact template files path <code>/wp-content/plugins/uix-contact/theme_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-contact' ); ?>
+   
+        </p>  
+        <p>
+           <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;Please check if you have the 2 template files <code>"uix-contact-style.css"</code>, <code>"uix-contact.php"</code>, <code>"partials-uix_contact_form_smtp.php"</code> and <code>"partials-uix_contact_form_comments.php"</code> in your templates directory. If you can\'t find these files, then just copy them from the directory "/wp-content/plugins/uix-contact/theme_templates/" to your templates directory.', 'uix-contact' ); ?>
       
         </p>  
         <p>
@@ -24,7 +36,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
   
      
          <p>
-           <?php _e( '3. You can pretty much custom every aspect of the look and feel of this page by modifying the <code>*.php</code> template files <strong>(Access the path to the themes directory)</strong> . Best Practices for Editing WordPress Template Files:', 'uix-contact' ); ?>
+           <?php _e( '<h4 class="uix-bg-custom-title">3. You can pretty much custom every aspect of the look and feel of this page by modifying the <code>*.php</code> template files <strong>(Access the path to the themes directory)</strong> . Best Practices for Editing WordPress Template Files:</h4>', 'uix-contact' ); ?>
         </p> 
         <p>
            <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;(1) WordPress comes with a theme and plugin editor as part of the core functionality. You can find it in your install by going to <strong>"Appearance > Editor"</strong> from your sidebar.', 'uix-contact' ); ?>
@@ -40,7 +52,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
          
     
         <p>
-           <?php _e( '4. <strong>Adding Uix Contact to Web Pages.</strong>', 'uix-contact' ); ?>
+           <?php _e( '<h4 class="uix-bg-custom-title">4. Adding Uix Contact to Web Pages.</h4>', 'uix-contact' ); ?>
         </p>   
         <p>
            <?php _e( 'There are three different ways you can add the Uix Contact widget to your site\'s pages:', 'uix-contact' ); ?>
@@ -80,17 +92,21 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
         <p>
            <img src="<?php echo UixContact::plug_directory(); ?>helper/img/menu.jpg" alt=""> <img src="<?php echo UixContact::plug_directory(); ?>helper/img/add-page.jpg" alt="">
         </p> 
+        
+         <p>
+           <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In your dashboard go to Appearance and select Menus. You’ll be able to add items to the menu. On the left you have your contact pages.', 'uix-contact' ); ?>
+        </p>        
 
 
         
         <p>
-           <?php _e( '5. The Uix Contact plugin allows users to easily enable a "Customizer Page" to themes. Go to <strong>"Appearance -> Customize"</strong>.', 'uix-contact' ); ?>
+           <?php _e( '<h4 class="uix-bg-custom-title">5. The Uix Contact plugin allows users to easily enable a "Customizer Page" to themes. Go to <strong>"Appearance -> Customize"</strong>.</h4>', 'uix-contact' ); ?>
         </p>   
         <p>
            <img src="<?php echo UixContact::plug_directory(); ?>helper/img/customize.jpg" alt="">
         </p>  
         <p>
-           <?php _e( '6. You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original <code>.css</code> files. Go to <strong>"Appearance -> Customize"</strong>.', 'uix-contact' ); ?>
+           <?php _e( '<h4 class="uix-bg-custom-title">6. You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original <code>.css</code> files. Go to <strong>"Appearance -> Customize"</strong>.</h4>', 'uix-contact' ); ?>
         </p>   
         <p>
            <img src="<?php echo UixContact::plug_directory(); ?>helper/img/css.jpg" alt="">

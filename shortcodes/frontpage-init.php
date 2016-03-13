@@ -22,7 +22,13 @@ function uix_contact_comment_fun( $atts, $content = null ){
 	 
     // capture output from the widgets
 	ob_start();
-		require_once get_template_directory() . '/partials-uix_contact_form_comments.php';
+	
+	    if( !UixContact::tempfile_exists() ) {
+			require_once WP_PLUGIN_DIR .'/'.UixContact::get_slug(). '/theme_templates/partials-uix_contact_form_comments.php';
+		} else {
+			require_once get_template_directory() . '/partials-uix_contact_form_comments.php';
+		}
+		
 		$out = ob_get_contents();
 	ob_end_clean();
 	 
@@ -48,7 +54,14 @@ function uix_contact_smtp_fun( $atts, $content = null ){
 	 
     // capture output from the widgets
 	ob_start();
-		require_once get_template_directory() . '/partials-uix_contact_form_smtp.php';
+	
+	    if( !UixContact::tempfile_exists() ) {
+			require_once WP_PLUGIN_DIR .'/'.UixContact::get_slug(). '/theme_templates/partials-uix_contact_form_smtp.php';
+		} else {
+			require_once get_template_directory() . '/partials-uix_contact_form_smtp.php';
+		}
+		
+		
 		$out = ob_get_contents();
 	ob_end_clean();
 	 

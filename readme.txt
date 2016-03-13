@@ -40,7 +40,9 @@ By default, the theme to use built-in WordPress comments form in lieu of a conta
 1. After activating your theme, you can see a prompt pointed out as absolutely critical. Go to "Appearance -> Install Plugins".
 Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)
 
-2. Please check if you have the 4 template files "uix-contact-style.css", "uix-contact.php", "partials-uix_contact_form_smtp.php" and "partials-uix_contact_form_comments.php" in your templates directory. If you can't find these files, then just copy them from the directory '/wp-content/plugins/uix-contact/theme_templates/' to your templates directory. 
+2. You need to create Uix Contact template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Contact template files path (/wp-content/plugins/uix-contact/theme_templates/) and upload files to your theme templates directory (/wp-content/themes/{your-theme}/).  
+
+   Please check if you have the 4 template files "uix-contact-style.css", "uix-contact.php", "partials-uix_contact_form_smtp.php" and "partials-uix_contact_form_comments.php" in your templates directory. If you can't find these files, then just copy them from the directory '/wp-content/plugins/uix-contact/theme_templates/' to your templates directory. 
 
 3. You can pretty much custom every aspect of the look and feel of this page by modifying the "*.php" template files (Access the path to the themes directory) . Best Practices for Editing WordPress Template Files:
 
@@ -67,6 +69,8 @@ There are three different ways you can add the Uix Contact widget to your site's
   (3) Create a Custom Page - Create a new WordPress file or edit an existing one. 
   
       Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Save the page and hit "Preview" to see how it looks. ( You should specify the template name, in this case I used "Uix Contact". The "Template Name: Uix Contact" tells WordPress that this will be a custom page template. )
+      
+      In your dashboard go to Appearance and select Menus. You’ll be able to add items to the menu. On the left you have your contact pages.
 	  
    
 

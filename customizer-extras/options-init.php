@@ -68,7 +68,7 @@ if ( class_exists( 'Kirki' )  && class_exists( 'UixContact' )  ) {
         'settings'    => 'custom_uix_contact_mode',
         'label'       => __( 'Receiving Messages with My Email (Instead of using the comments)', 'uix-contact' ),
         'description' => __( 'By default, the theme to use built-in WordPress comments form in lieu of a contact form.<br>
-You can edit the <em>"partials-comments_form.php, partials-comments.php, partials-smtp_form.php"</em> files so that customize the contact form.', 'uix-contact' ),
+You can edit the <em>&quot;partials-comments_form.php, partials-comments.php, partials-smtp_form.php&quot;</em> files so that customize the contact form.', 'uix-contact' ),
         'section'     => 'panel-theme-uix-contact',
         'default'     => false,
         'priority'    => 10,
@@ -119,8 +119,8 @@ You can edit the <em>"partials-comments_form.php, partials-comments.php, partial
     Kirki::add_field( $uix_contact_kirki_config_id, array(
         'type'        => 'text',
         'settings'    => 'custom_uix_contact_smtp_fromname',
-        'label'       => __( 'Email "From" Name', 'uix-contact' ),
-        'help'        => __( 'The name your recipients will see as part of the "from" or "sender" value when they receive your message. The name as it will appear in recipient clients.', 'uix-contact' ),
+        'label'       => __( 'Email &quot;From&quot; Name', 'uix-contact' ),
+        'help'        => __( 'The name your recipients will see as part of the &quot;from&quot; or &quot;sender&quot; value when they receive your message. The name as it will appear in recipient clients.', 'uix-contact' ),
         'section'     => 'panel-theme-uix-contact',
         'default'     => '',
         'priority'    => 10,
@@ -136,7 +136,7 @@ You can edit the <em>"partials-comments_form.php, partials-comments.php, partial
     Kirki::add_field( $uix_contact_kirki_config_id, array(
         'type'        => 'text',
         'settings'    => 'custom_uix_contact_smtp_frommail',
-        'label'       => __( 'Email "From" Address', 'uix-contact' ),
+        'label'       => __( 'Email &quot;From&quot; Address', 'uix-contact' ),
         'help'        => __( 'An email has two addresses associated with sending it: the sender, and the from address. The sender is where computers should respond (in the case of bounce messages or errors); the from address is where people should respond. In most cases, the sender and the from address match. But they do not always, and they do not have to. The email address that will be used to send emails to your recipients.', 'uix-contact' ),
         'section'     => 'panel-theme-uix-contact',
         'default'     => '',
@@ -155,7 +155,7 @@ You can edit the <em>"partials-comments_form.php, partials-comments.php, partial
         'type'        => 'text',
         'settings'    => 'custom_uix_contact_smtp_host',
         'label'       => __( 'SMTP Host', 'uix-contact' ),
-        'help'        => __( 'Like for example google smtp host is "smtp.gmail.com"', 'uix-contact' ),
+        'help'        => __( 'Like for example google smtp host is &quot;smtp.gmail.com&quot;', 'uix-contact' ),
         'section'     => 'panel-theme-uix-contact',
         'default'     => '',
         'priority'    => 10,
@@ -172,7 +172,7 @@ You can edit the <em>"partials-comments_form.php, partials-comments.php, partial
         'type'        => 'text',
         'settings'    => 'custom_uix_contact_smtp_port',
         'label'       => __( 'SMTP Port', 'uix-contact' ),
-        'help'        => __( 'Note: Gmail users need to use the server "smtp.gmail.com" with TLS enabled and port 587.', 'uix-contact' ),
+        'help'        => __( 'Note: Gmail users need to use the server &quot;smtp.gmail.com&quot; with TLS enabled and port 587.', 'uix-contact' ),
         'section'     => 'panel-theme-uix-contact',
         'default'     => '',
         'priority'    => 10,
@@ -268,7 +268,7 @@ You can edit the <em>"partials-comments_form.php, partials-comments.php, partial
         'settings'    => 'custom_uix_contact_msg_sub',
         'label'       => __( 'Message Subject Template', 'uix-contact' ),
         'description' => __( 'You can use the following placeholders in the subject templates, which will be replaced by the actual values when the email is sent: <br> <code>{site_name}</code> --> Your Site Name', 'uix-contact' ),
-        'help' => __( 'The "Subject" section of an e-mail is where one can identify what the e-mail is about with a short phrase.And it is completely optional and does not affect whether the e-mail will be sent properly or not. <br>This will become a mark of the subject for the "Contact Form" E-mail you receive. You can change this if you like.', 'uix-contact' ),
+        'help' => __( 'The &quot;Subject&quot; section of an e-mail is where one can identify what the e-mail is about with a short phrase.And it is completely optional and does not affect whether the e-mail will be sent properly or not. <br>This will become a mark of the subject for the &quot;Contact Form&quot; E-mail you receive. You can change this if you like.', 'uix-contact' ),
         'section'     => 'panel-theme-uix-contact',
         'default'  => '{site_name} You have a new message',
         'priority'    => 10,
@@ -313,47 +313,92 @@ You can edit the <em>"partials-comments_form.php, partials-comments.php, partial
 
 
 	
+	
 	//Read css file value
+	global $org_cssname_uix_contact;
 	global $org_csspath_uix_contact;
-	$org_csspath_uix_contact = get_template_directory_uri() .'/uix-contact-style.css';
+
+    $org_cssname_uix_contact = 'uix-contact-style.css';
+	$org_csspath_uix_contact = get_template_directory_uri() .'/'. $org_cssname_uix_contact;
+	
 	
 	function uix_contact_view_style() {
 		
+
+		global $org_cssname_uix_contact;
 		global $org_csspath_uix_contact;
-		UixContact::init_filesystem();
-		global $wp_filesystem;
-		$style_org_code_uix_contact = $wp_filesystem->get_contents( $org_csspath_uix_contact );
 	
 		
-		echo '
-		         <div class="uix-contact-dialog-mask"></div>
-				 <div class="uix-contact-dialog" id="uix-contact-view-css-container">  
-					<textarea rows="15" style=" width:95%;" class="regular-text">'.$style_org_code_uix_contact.'</textarea>
-					<a href="javascript:" id="uix_contact_close_css" class="close button button-primary">'.__( 'Close', 'uix-contact' ).'</a>  
-				</div>
-				<script type="text/javascript">
-					
-				( function($) {
-					
-					$( function() {
-						
-						var dialog_uix_contact = $( "#uix-contact-view-css-container, .uix-contact-dialog-mask" );  
-						
-						$( "#uix_contact_view_css" ).click( function() {
-							dialog_uix_contact.show();
-						});
-						$( "#uix_contact_close_css" ).click( function() {
-							dialog_uix_contact.hide();
-						});
-					
-			
-					} );
-					
-				} ) ( jQuery );
-				
-				</script>
+		wp_nonce_field( 'customize-filesystem-nonce' );
 		
-		';	
+		// capture output from WP_Filesystem
+		ob_start();
+		
+			UixContact::wpfilesystem_read_file( 'customize-filesystem-nonce', 'customize.php', '', $org_cssname_uix_contact, 'theme' );
+			$filesystem_uix_contact_out = ob_get_contents();
+		ob_end_clean();
+		
+		if ( empty( $filesystem_uix_contact_out ) ) {
+			
+			$style_org_code_uix_contact = UixContact::wpfilesystem_read_file( 'customize-filesystem-nonce', 'customize.php', '', $org_cssname_uix_contact, 'theme' );
+			
+			echo '
+					 <div class="uix-contact-dialog-mask"></div>
+					 <div class="uix-contact-dialog" id="uix-contact-view-css-container">  
+						<textarea rows="15" style=" width:95%;" class="regular-text">'.$style_org_code_uix_contact.'</textarea>
+						<a href="javascript:" id="uix_contact_close_css" class="close button button-primary">'.__( 'Close', 'uix-contact' ).'</a>  
+					</div>
+					<script type="text/javascript">
+						
+					( function($) {
+						
+						"use strict";
+						
+						$( function() {
+							
+							var dialog_uix_contact = $( "#uix-contact-view-css-container, .uix-contact-dialog-mask" );  
+							
+							$( "#uix_contact_view_css" ).click( function() {
+								dialog_uix_contact.show();
+							});
+							$( "#uix_contact_close_css" ).click( function() {
+								dialog_uix_contact.hide();
+							});
+						
+				
+						} );
+						
+					} ) ( jQuery );
+					
+					</script>
+			
+			';	
+	
+		} else {
+			
+			echo '
+					
+					<script type="text/javascript">
+						
+					( function($) {
+						
+						"use strict";
+						
+						$( function() {
+							
+							$( "#uix_contact_view_css" ).attr({ "href": "'.$org_csspath_uix_contact.'", "target":"_blank" });
+				
+						} );
+						
+					} ) ( jQuery );
+					
+					</script>
+			
+			';	
+			
+			
+		}
+		
 	}
 	
     add_action( 'customize_controls_print_scripts', 'uix_contact_view_style' );
