@@ -58,7 +58,10 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 
 ![](https://github.com/xizon/Uix-Contact/blob/master/helper/img/plug.jpg)
 
-2.Please check if you have the **4** template files `uix-contact-style.css`, `uix-contact.php`, `partials-uix_contact_form_smtp.php` and `partials-uix_contact_form_comments.php` in your templates directory. If you can't find these files, then just copy them from the directory **"/wp-content/plugins/uix-contact/theme_templates/"** to your templates directory.
+2.You need to create Uix Contact template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Contact template files path (`/wp-content/plugins/uix-contact/theme_templates/`) and upload files to your theme templates directory (`/wp-content/themes/{your-theme}/`).  
+
+
+Please check if you have the **4** template files `uix-contact-style.css`, `uix-contact.php`, `partials-uix_contact_form_smtp.php` and `partials-uix_contact_form_comments.php` in your templates directory. If you can't find these files, then just copy them from the directory **"/wp-content/plugins/uix-contact/theme_templates/"** to your templates directory.
 
 ![](https://github.com/xizon/Uix-Contact/blob/master/helper/img/temp.jpg)
 
