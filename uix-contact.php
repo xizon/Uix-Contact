@@ -407,7 +407,12 @@ class UixContact {
 					} 
 				}
 		
-				return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-contact' );
+				if ( self::tempfile_exists() ) {
+					return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-contact' );
+				} else {
+					return __( '<div class="notice notice-error"><p><strong>There was a problem copying your template files:</strong> 
+Your host root directory in WordPress can not be found. Please check your server settings. You can upload files to theme templates directory using FTP.</p></div>', 'uix-contact' );
+				}
 				
 		  } 
 	}	 
