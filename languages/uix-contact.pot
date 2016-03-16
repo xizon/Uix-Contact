@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Contact 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Wed Mar 16 2016 19:06:18 GMT+0800 (CST)\n"
+"POT-Revision-Date: Thu Mar 17 2016 02:53:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,19 +86,17 @@ msgid ""
 "theme}/</code>. "
 msgstr ""
 
-#: ../uix-contact.php:411 ../uix-contact.php:473
+#: ../uix-contact.php:420 ../uix-contact.php:485
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-contact.php:413
+#: ../uix-contact.php:422
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
-"template files:</strong> \n"
-"Your host root directory in WordPress can not be found. Please check your "
-"server settings. You can upload files to theme templates directory using FTP."
-"</p></div>"
+"template files:</strong> Please check your server settings. You can upload "
+"files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
 #: ../customizer-extras/options-init.php:69
