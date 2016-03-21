@@ -26,7 +26,8 @@
 }
 
 
-#uix-contact-commentform .error{
+#uix-contact-commentform .error,
+.uix-contact-send-error{
 	color:red;
 	font-style:italic; 
 	font-weight:bold; 
