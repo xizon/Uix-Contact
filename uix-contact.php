@@ -629,7 +629,8 @@ class UixContact {
                                 $(form).find( "[type='submit']" ).val( 'Please wait.. Process Loading...' );
                                 $(form).find( "[type='submit']" ).attr( 'disabled', 'disabled' );
                                 $.post( acturl, $(form).serialize(), function( data ) {
-                                        $(form).find( "[type='submit']" ).val( 'Your message has been sent successfully.' );
+									
+								     	$(form).find( "[type='submit']" ).val( 'Your message has been sent successfully.' );
                                         return false;
                                 });
                                 

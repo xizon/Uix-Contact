@@ -23,6 +23,7 @@ if( isset( $_POST['my_comment'] ) ) { if( function_exists( 'stripslashes' ) ) { 
 */
 $emailSentStatus = '';
 $emailError = false;
+$emailSent = false;
 $infoError = '';
 
 
@@ -81,7 +82,7 @@ if( isset( $_POST['submitted'] ) && $_POST['submitted'] == true ) {
 	
 	//------Field (author)
 	if( trim( $_POST['my_author'] ) == '' ) {
-		$infoError = '<span class="error">'.__( 'Please specify your name.', 'uix-contact' ).'</span>';
+		$infoError = '<span class="uix-contact-send-error">'.__( 'Please specify your name.', 'uix-contact' ).'</span>';
 		$emailError = true;
 	} else {
 		$name = trim( $_POST['my_author'] );
@@ -89,10 +90,10 @@ if( isset( $_POST['submitted'] ) && $_POST['submitted'] == true ) {
 
 	//------Field (email from)
 	if( trim( $_POST['my_email'] ) == '' )  {
-		$infoError = '<span class="error">'.__( 'We need your email address to contact you.', 'uix-contact' ).'</span>';
+		$infoError = '<span class="uix-contact-send-error">'.__( 'We need your email address to contact you.', 'uix-contact' ).'</span>';
 		$emailError = true;
 	} else if ( !preg_match('#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#', trim( $_POST['my_email'] ) ) ) {
-		$infoError = '<span class="error">'.__( 'Your email address must be in the format of name@domain.com', 'uix-contact' ).'</span>';
+		$infoError = '<span class="uix-contact-send-error">'.__( 'Your email address must be in the format of name@domain.com', 'uix-contact' ).'</span>';
 		$emailError = true;
 	} else {
 		$email = trim( $_POST['my_email'] );
@@ -101,7 +102,7 @@ if( isset( $_POST['submitted'] ) && $_POST['submitted'] == true ) {
  
 	//------Field (comment)
 	if( trim( $_POST['my_comment'] ) == '' ) {
-		$infoError = '<span class="error">'.__( 'Please enter your message.', 'uix-contact' ).'</span>';
+		$infoError = '<span class="uix-contact-send-error">'.__( 'Please enter your message.', 'uix-contact' ).'</span>';
 		$emailError = true;
 	} else {
 		if( function_exists( 'stripslashes' ) ) {
@@ -171,7 +172,8 @@ if( isset( $_POST['submitted'] ) && $_POST['submitted'] == true ) {
 		
 		
 		if( !$mail->send() ) {
-			$emailSentStatus = '	<p>'.__( 'Mailer Error: ', 'uix-contact' ).'' . $mail->ErrorInfo.'</p>';
+			$infoError = '<span class="uix-contact-send-error">'.__( 'Mailer Error: ', 'uix-contact' ).'' . $mail->ErrorInfo.'.<br>'.__( 'If you use Gmail, you need allowing less secure apps to access your account. Check out', 'uix-contact' ).' https://support.google.com/accounts/answer/6010255</span>';
+			
 		} else {
 			$emailSent = true;
 		}
@@ -184,8 +186,8 @@ if( isset( $_POST['submitted'] ) ) {
 	$emailSentStatus = '	<p>'.$infoError.'</p>';
 } 
 
-if( isset( $emailSent ) && $emailSent == true ) { 
-	$emailSentStatus = '	<p>'.__( 'Thanks, your email was sent successfully.', 'uix-contact' ).'</p>';
+if( isset( $emailSent ) && $emailSent === true ) { 
+	$emailSentStatus = '	<p data-status="ok">'.__( 'Thanks, your email was sent successfully.', 'uix-contact' ).'</p>';
 } 
 
 
