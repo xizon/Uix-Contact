@@ -221,7 +221,7 @@ You can edit the <em>&quot;partials-comments_form.php, partials-comments.php, pa
     ) );	
     
     Kirki::add_field( $uix_contact_kirki_config_id, array(
-        'type'        => 'text',
+        'type'        => 'password',
         'settings'    => 'custom_uix_contact_smtp_pass',
         'label'       => __( 'SMTP Password', 'uix-contact' ),
         'description' => '',
