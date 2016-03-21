@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Contact 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Thu Mar 17 2016 02:53:04 GMT+0800 (CST)\n"
+"POT-Revision-Date: Mon Mar 21 2016 14:15:34 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,9 +133,9 @@ msgstr ""
 
 #: ../customizer-extras/options-init.php:123
 msgid ""
-"The name your recipients will see as part of the &quot;from&quot; or &quot;"
-"sender&quot; value when they receive your message. The name as it will "
-"appear in recipient clients."
+"The name your recipients will see as part of the [from] or [sender] value "
+"when they receive your message. The name as it will appear in recipient "
+"clients."
 msgstr ""
 
 #: ../customizer-extras/options-init.php:139
@@ -157,60 +157,67 @@ msgid "SMTP Host"
 msgstr ""
 
 #: ../customizer-extras/options-init.php:158
-msgid "Like for example google smtp host is &quot;smtp.gmail.com&quot;"
+msgid ""
+"If you use Gmail, you need <a href=\"https://support.google."
+"com/accounts/answer/6010255\" target=\"_blank\">Allowing less secure apps to "
+"access your account</a>."
 msgstr ""
 
-#: ../customizer-extras/options-init.php:174
-msgid "SMTP Port"
+#: ../customizer-extras/options-init.php:159
+msgid "Like for example google smtp host is [smtp.gmail.com]"
 msgstr ""
 
 #: ../customizer-extras/options-init.php:175
-msgid ""
-"Note: Gmail users need to use the server &quot;smtp.gmail.com&quot; with TLS "
-"enabled and port 587."
+msgid "SMTP Port"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:191
+#: ../customizer-extras/options-init.php:176
+msgid ""
+"Note: Gmail users need to use the server [smtp.gmail.com] with TLS enabled "
+"and port 587."
+msgstr ""
+
+#: ../customizer-extras/options-init.php:192
 msgid "SMTP Authentication"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:209
+#: ../customizer-extras/options-init.php:210
 msgid "SMTP Username"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:226
+#: ../customizer-extras/options-init.php:227
 msgid "SMTP Password"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:244
+#: ../customizer-extras/options-init.php:245
 msgid "Type of Encryption"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:269
+#: ../customizer-extras/options-init.php:270
 msgid "Message Subject Template"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:270
+#: ../customizer-extras/options-init.php:271
 msgid ""
 "You can use the following placeholders in the subject templates, which will "
 "be replaced by the actual values when the email is sent: <br> "
 "<code>{site_name}</code> --> Your Site Name"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:271
+#: ../customizer-extras/options-init.php:272
 msgid ""
-"The &quot;Subject&quot; section of an e-mail is where one can identify what "
-"the e-mail is about with a short phrase.And it is completely optional and "
-"does not affect whether the e-mail will be sent properly or not. <br>This "
-"will become a mark of the subject for the &quot;Contact Form&quot; E-mail "
-"you receive. You can change this if you like."
-msgstr ""
-
-#: ../customizer-extras/options-init.php:288
-msgid "Message Body Template"
+"The [Subject] section of an e-mail is where one can identify what the e-mail "
+"is about with a short phrase.And it is completely optional and does not "
+"affect whether the e-mail will be sent properly or not. <br>This will become "
+"a mark of the subject for the [Contact Form] E-mail you receive. You can "
+"change this if you like."
 msgstr ""
 
 #: ../customizer-extras/options-init.php:289
+msgid "Message Body Template"
+msgstr ""
+
+#: ../customizer-extras/options-init.php:290
 msgid ""
 "You can use the following placeholders in the message templates, which will "
 "be replaced by the actual values when the email is sent: <br> "
@@ -220,52 +227,52 @@ msgid ""
 "Message"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:290
+#: ../customizer-extras/options-init.php:291
 msgid ""
 "You can customize the HTML template to match your content of mail by making "
 "a few simple style changes. \n"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:294 ../theme_templates/partials-
-#: uix_contact_form_smtp.php:49
+#: ../customizer-extras/options-init.php:295 ../theme_templates/partials-
+#: uix_contact_form_smtp.php:50
 msgid "You have a new message from contact form."
 msgstr ""
 
-#: ../customizer-extras/options-init.php:296 ../theme_templates/partials-
+#: ../customizer-extras/options-init.php:297 ../theme_templates/partials-
 #: uix_contact_form_comments.php:28 ../theme_templates/partials-
-#: uix_contact_form_smtp.php:51 ../theme_templates/partials-uix_contact_form_smtp.
-#: php:199
+#: uix_contact_form_smtp.php:52 ../theme_templates/partials-uix_contact_form_smtp.
+#: php:201
 msgid "Name"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:297 ../theme_templates/partials-
+#: ../customizer-extras/options-init.php:298 ../theme_templates/partials-
 #: uix_contact_form_comments.php:33 ../theme_templates/partials-
-#: uix_contact_form_smtp.php:52 ../theme_templates/partials-uix_contact_form_smtp.
-#: php:204
+#: uix_contact_form_smtp.php:53 ../theme_templates/partials-uix_contact_form_smtp.
+#: php:206
 msgid "Email"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:298 ../theme_templates/partials-
-#: uix_contact_form_smtp.php:53
+#: ../customizer-extras/options-init.php:299 ../theme_templates/partials-
+#: uix_contact_form_smtp.php:54
 msgid "Website/Tel."
 msgstr ""
 
-#: ../customizer-extras/options-init.php:349
+#: ../customizer-extras/options-init.php:350
 msgid "Close"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:410
+#: ../customizer-extras/options-init.php:411
 msgid "Custom CSS"
 msgstr ""
 
-#: ../customizer-extras/options-init.php:411
+#: ../customizer-extras/options-init.php:412
 msgid ""
 "You can overview the original styles to overwrite it. It will be on creating "
 "new styles to your website, without modifying original <code>.css</code> "
 "files."
 msgstr ""
 
-#: ../customizer-extras/options-init.php:414
+#: ../customizer-extras/options-init.php:415
 msgid "CSS file root directory:"
 msgstr ""
 
@@ -760,7 +767,7 @@ msgid "Required fields are marked %s"
 msgstr ""
 
 #: ../theme_templates/partials-uix_contact_form_comments.php:38 ..
-#: /theme_templates/partials-uix_contact_form_smtp.php:209
+#: /theme_templates/partials-uix_contact_form_smtp.php:211
 msgid "Website"
 msgstr ""
 
@@ -817,31 +824,37 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: ../theme_templates/partials-uix_contact_form_smtp.php:84
+#: ../theme_templates/partials-uix_contact_form_smtp.php:85
 msgid "Please specify your name."
 msgstr ""
 
-#: ../theme_templates/partials-uix_contact_form_smtp.php:92
+#: ../theme_templates/partials-uix_contact_form_smtp.php:93
 msgid "We need your email address to contact you."
 msgstr ""
 
-#: ../theme_templates/partials-uix_contact_form_smtp.php:95
+#: ../theme_templates/partials-uix_contact_form_smtp.php:96
 msgid "Your email address must be in the format of name@domain.com"
 msgstr ""
 
-#: ../theme_templates/partials-uix_contact_form_smtp.php:104
+#: ../theme_templates/partials-uix_contact_form_smtp.php:105
 msgid "Please enter your message."
 msgstr ""
 
-#: ../theme_templates/partials-uix_contact_form_smtp.php:174
+#: ../theme_templates/partials-uix_contact_form_smtp.php:175
 msgid "Mailer Error: "
 msgstr ""
 
-#: ../theme_templates/partials-uix_contact_form_smtp.php:188
+#: ../theme_templates/partials-uix_contact_form_smtp.php:175
+msgid ""
+"If you use Gmail, you need allowing less secure apps to access your account. "
+"Check out"
+msgstr ""
+
+#: ../theme_templates/partials-uix_contact_form_smtp.php:190
 msgid "Thanks, your email was sent successfully."
 msgstr ""
 
-#: ../theme_templates/partials-uix_contact_form_smtp.php:213
+#: ../theme_templates/partials-uix_contact_form_smtp.php:215
 msgid "Message"
 msgstr ""
 
