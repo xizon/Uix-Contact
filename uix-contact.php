@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Uix Contact
-Plugin URI: http://uiux.cc/wp-plugins/uix-contact/
+Plugin URI: https://uiux.cc/wp-plugins/uix-contact/
 Description: Uix Contact allowing user to change different receiving messages options with the WordPress theme customizer and take advantage of built-in contact form.
 Author: UIUX Lab
-Author URI: http://uiux.cc
+Author URI: https://uiux.cc
 Version: 1.0.0
 Text Domain: uix-contact
 License: GPLv2 or later
@@ -190,7 +190,7 @@ class UixContact {
 	
 		require_once 'inc/plugin-update-checker.php';
 		$myUpdateChecker = PucFactory::buildUpdateChecker(
-			'http://uiux.cc/wp-plugins/'.self::get_slug().'/update/info.json',
+			'https://uiux.cc/wp-plugins/'.self::get_slug().'/update/info.json',
 			__FILE__
 		);
 

@@ -1,7 +1,7 @@
 === Uix Contact ===
 Contributors: UIUX Lab
-Author URI: http://uiux.cc
-Plugin URL: http://uiux.cc/wp-plugins/uix-contact/
+Author URI: https://uiux.cc
+Plugin URL: https://uiux.cc/wp-plugins/uix-contact/
 Tags: contact, php contact form, SMTP, phpMailer, mailer
 Requires at least: 4.2
 Tested up to: 4.4.2
