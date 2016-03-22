@@ -4,7 +4,7 @@ This is a WordPress Plugin. Uix Contact allowing user to change different receiv
 Copyright (c) 2016 UIUX Lab [@uiux_lab](http://twitter.com/uiux_lab)
 
 
-[Plugin URI](http://uiux.cc/wp-plugins/uix-contact/)
+[Plugin URI](https://uiux.cc/wp-plugins/uix-contact/)
 
 ### Licensing
 
