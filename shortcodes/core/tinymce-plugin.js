@@ -132,11 +132,11 @@ var custom_uploader;
 				
 			ed.addButton( 'uix_contact_btn', {
 				text: '',
-				title: 'Uix Contact',
+				title: ed.getLang( 'uix_contact_custom_tinymce_plugin.lang_1' ),
 				image 	: url + '/icon.png',
 				onclick: function() {
 					ed.windowManager.open( {
-						title: 'Insert Uix Contact',
+						title: ed.getLang( 'uix_contact_custom_tinymce_plugin.lang_2' ),
 						body: [
 					
 							{
@@ -144,8 +144,8 @@ var custom_uploader;
 								name: 'uix_contact_form',
 								label: '',
 								'values': [
-									{text: 'Make a contact form use Post Comment (send private messages in WordPress)', value: '1'},
-									{text: 'Make a contact form use SMTP (send email with PHPMailer)', value: '2'},
+									{text: ed.getLang( 'uix_contact_custom_tinymce_plugin.lang_3' ), value: '1'},
+									{text: ed.getLang( 'uix_contact_custom_tinymce_plugin.lang_4' ), value: '2'},
 								]
 							},
 					

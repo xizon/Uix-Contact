@@ -25,6 +25,18 @@ function uix_contact_add_buttons( $plugin_array ) {
 add_filter( "mce_external_plugins", "uix_contact_add_buttons" );
 
 
+/**
+ * To internationalize a TinyMCE button/plugin within a WordPress plugin
+ * @link: https://codex.wordpress.org/Plugin_API/Filter_Reference/mce_external_languages
+ *
+ */
+ 
+function uix_contact_custom_tinymce_plugin_add_locale( $locales ) {
+    $locales [ 'uix_contact_custom_tinymce_plugin' ] = plugin_dir_path ( __FILE__ ) . 'core/tinymce-plugin-lang.php';
+    return $locales;
+}
+add_filter( 'mce_external_languages', 'uix_contact_custom_tinymce_plugin_add_locale' );
+
 
 
 
