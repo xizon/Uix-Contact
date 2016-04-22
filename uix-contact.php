@@ -39,7 +39,6 @@ class UixContact {
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
 		add_action( 'wp_head', array( __CLASS__, 'do_my_shortcodes' ) );
 		add_action( 'init', array( __CLASS__, 'customizer' ) );
-		add_filter( 'comments_open', array( __CLASS__, 'comments_open' ), 10, 2 );
 		
 
 	}

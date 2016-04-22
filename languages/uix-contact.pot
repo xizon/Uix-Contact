@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Contact 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Wed Apr 20 2016 02:39:29 GMT+0800 (CST)\n"
+"POT-Revision-Date: Fri Apr 22 2016 20:12:23 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -779,7 +779,7 @@ msgid "Required fields are marked %s"
 msgstr ""
 
 #: ../theme_templates/partials-uix_contact_form_comments.php:38 ..
-#: /theme_templates/partials-uix_contact_form_smtp.php:211
+#: theme_templates/partials-uix_contact_form_smtp.php:211
 msgid "Website"
 msgstr ""
 

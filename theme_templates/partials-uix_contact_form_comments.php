@@ -65,13 +65,9 @@ $commentform_args = array(
 							   <hr>
 							   ',
 							   
-	'comment_notes_before' => '<p class="comment-notes">'.__( 'Your email address will not be published', 'uix-contact' ).''.( $req ? $required_text : '' ).'</p>',
+	'comment_notes_before' => '',
+	'comment_notes_after'  => '',
 	
-	/*
-	'comment_notes_after'  => '<p class="form-allowed-tags">
-								    '.__( 'You may use these', 'uix-contact' ).' <abbr title="'.__( 'HyperText Markup Language', 'uix-contact' ).'">'.__( 'HTML', 'uix-contact' ).'</abbr> '.__( 'tags and attributes', 'uix-contact' ).': <code>'.allowed_tags().'</code>
-							  </p>',
-	*/
 	
 	'id_form'              => 'uix-contact-commentform',
 	'id_submit'            => 'submit',
