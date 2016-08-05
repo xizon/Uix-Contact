@@ -1,53 +1,50 @@
-
 /* Contact Form
 --------------------------------------------------------------*/
 
-.uix-contact-container{
-	width:980px;
-	margin:0 auto;
-	position:relative;
-	box-sizing:border-box;
-	-moz-box-sizing:border-box; /* Firefox */
-	-webkit-box-sizing:border-box; /* Safari */
+.uix-contact-container {
+    width: 980px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+ /* Firefox */
+    -webkit-box-sizing: border-box;
+ /* Safari */;
 }
 
-
-#uix-contact-commentform{
-	margin-top:2em;
+#uix-contact-commentform {
+    margin-top: 2em;
 }
-#uix-contact-commentform .req-icon{
-	padding-left:10px;
-	color:#f00;
+
+#uix-contact-commentform .req-icon {
+    padding-left: 10px;
+    color: #f00;
 }
 
 #uix-contact-commentform input,
-#uix-contact-commentform textarea{
-	width:100%;
+#uix-contact-commentform textarea {
+    width: 100%;
 }
 
-
 #uix-contact-commentform .error,
-.uix-contact-send-error{
-	color:red;
-	font-style:italic; 
-	font-weight:bold; 
-	display:block;
+.uix-contact-send-error {
+    color: red;
+    font-style: italic;
+    font-weight: bold;
+    display: block;
 }
 
 #uix-contact-commentform input:focus,
-#uix-contact-commentform textarea:focus
-{
-	border:1px dotted black;
+#uix-contact-commentform textarea:focus {
+    border: 1px dotted black;
 }
 
 #uix-contact-commentform input.error,
-#uix-contact-commentform textarea.error
-{
-	border:1px dotted red;
-
+#uix-contact-commentform textarea.error {
+    border: 1px dotted red;
 }
-#uix-contact-commentform .gray *
-{
-	color:gray;
+
+#uix-contact-commentform .gray * {
+    color: gray;
 }
 	
