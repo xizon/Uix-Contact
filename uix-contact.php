@@ -52,7 +52,7 @@ class UixContact {
 	public static function frontpage_scripts() {
 	
 		// Form validation
-		wp_enqueue_script( self::PREFIX . '-contact-js-validate', self::plug_directory() .'assets/js/jquery.validate.min.js', array( 'jquery' ), '1.14.0', true );	
+		wp_enqueue_script( 'validate', self::plug_directory() .'assets/js/jquery.validate.min.js', array( 'jquery' ), '1.14.0', true );	
 	
 		
 		//Main stylesheets and scripts to Front-End
