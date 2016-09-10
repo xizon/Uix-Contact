@@ -6,44 +6,16 @@
 
 if ( class_exists( 'Kirki' )  && class_exists( 'UixContact' )  ) {
 	
-	global $wp_customize;
+	
 	
 	$uix_contact_kirki_config_id = 'uix_contact_kirki_custom';
 	
-	/*
-	*
-	* Kirki customizer configuration
-	*
-	*/
-	
-	Kirki::add_config( $uix_contact_kirki_config_id, array(
-		'capability'    => 'edit_theme_options',
-		'option_type'   => 'theme_mod',
-	) );
-	
 
-	
-	
 	//Function of "Allowing html in text"
 	function uix_contact_kirki_do_not_filter_anything( $value ) {
 		return $value;
 	}
-		
 	
-			
-	//This function adds some styles to the WordPress Customizer
-	function uix_contact_kirki_custom_style() {
-	
-		wp_enqueue_style( 'kirki-customizer-custom-css', UixContact::plug_directory() .  'customizer-extras/css/main.css', null, null );
-
-	}
-	if ( $wp_customize ) {
-	
-		add_action( 'customize_controls_print_styles', 'uix_contact_kirki_custom_style', 100 );
-		
-	}
-	
-
 
     /*
      * ------------------------------------------------------------------------------------------------
@@ -314,97 +286,6 @@ You can edit the <em>&quot;partials-comments_form.php, partials-comments.php, pa
 
 
 	
-	
-	//Read css file value
-	global $org_cssname_uix_contact;
-	global $org_csspath_uix_contact;
-
-    $org_cssname_uix_contact = 'uix-contact-style.css';
-	$org_csspath_uix_contact = get_template_directory_uri() .'/'. $org_cssname_uix_contact;
-	
-	
-	function uix_contact_view_style() {
-		
-
-		global $org_cssname_uix_contact;
-		global $org_csspath_uix_contact;
-	
-		
-		wp_nonce_field( 'customize-filesystem-nonce' );
-		
-		// capture output from WP_Filesystem
-		ob_start();
-		
-			UixContact::wpfilesystem_read_file( 'customize-filesystem-nonce', 'customize.php', '', $org_cssname_uix_contact, 'theme' );
-			$filesystem_uix_contact_out = ob_get_contents();
-		ob_end_clean();
-		
-		if ( empty( $filesystem_uix_contact_out ) ) {
-			
-			$style_org_code_uix_contact = UixContact::wpfilesystem_read_file( 'customize-filesystem-nonce', 'customize.php', '', $org_cssname_uix_contact, 'theme' );
-			
-			echo '
-					 <div class="uix-contact-dialog-mask"></div>
-					 <div class="uix-contact-dialog" id="uix-contact-view-css-container">  
-						<textarea rows="15" style=" width:95%;" class="regular-text">'.$style_org_code_uix_contact.'</textarea>
-						<a href="javascript:" id="uix_contact_close_css" class="close button button-primary">'.__( 'Close', 'uix-contact' ).'</a>  
-					</div>
-					<script type="text/javascript">
-						
-					( function($) {
-						
-						"use strict";
-						
-						$( function() {
-							
-							var dialog_uix_contact = $( "#uix-contact-view-css-container, .uix-contact-dialog-mask" );  
-							
-							$( "#uix_contact_view_css" ).click( function() {
-								dialog_uix_contact.show();
-							});
-							$( "#uix_contact_close_css" ).click( function() {
-								dialog_uix_contact.hide();
-							});
-						
-				
-						} );
-						
-					} ) ( jQuery );
-					
-					</script>
-			
-			';	
-	
-		} else {
-			
-			echo '
-					
-					<script type="text/javascript">
-						
-					( function($) {
-						
-						"use strict";
-						
-						$( function() {
-							
-							$( "#uix_contact_view_css" ).attr({ "href": "'.$org_csspath_uix_contact.'", "target":"_blank" });
-				
-						} );
-						
-					} ) ( jQuery );
-					
-					</script>
-			
-			';	
-			
-			
-		}
-		
-	}
-	
-    add_action( 'customize_controls_print_scripts', 'uix_contact_view_style' );
-
-
 	Kirki::add_field( $uix_contact_kirki_config_id, array(
 		'type'        => 'custom',
 		'settings'    => 'custom_uix_contact_css_tip',
@@ -413,7 +294,7 @@ You can edit the <em>&quot;partials-comments_form.php, partials-comments.php, pa
 		'section'     => 'panel-theme-uix-contact',
 		'default'     => '
         <p>'.__( 'CSS file root directory:', 'uix-contact' ).'
-            <a href="javascript:" id="uix_contact_view_css" >'.$org_csspath_uix_contact.'</a>
+            <a href="'.get_template_directory_uri().'/uix-contact-style.css" id="uix_slides_view_css" target="_blank" >'.get_template_directory_uri().'/uix-contact-style.css</a>
         </p>  
 		',
 		'priority'    => 10

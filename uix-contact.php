@@ -38,10 +38,11 @@ class UixContact {
 		add_action( 'admin_init', array( __CLASS__, 'load_helper' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
 		add_action( 'wp_head', array( __CLASS__, 'do_my_shortcodes' ) );
-		add_action( 'init', array( __CLASS__, 'customizer' ) );
+		
 		
 
 	}
+	
 	
 	
 	/*
@@ -251,23 +252,6 @@ class UixContact {
 	}
 	
 
-	
-	/*
-	 * Building WordPress themes using the Kirki Customizer
-	 *
-	 *
-	 */
-	public static function customizer() {
-		
-		if ( !class_exists( 'Kirki' ) ) {
-		    require_once 'customizer-extras/kirki/kirki.php';
-		}
-		
-		require_once 'customizer-extras/options-init.php';
-
-
-	}	
-	
 
 	/*
 	 *  Add admin one-time notifications
