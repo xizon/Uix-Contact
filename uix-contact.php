@@ -5,7 +5,7 @@ Plugin URI: https://uiux.cc/wp-plugins/uix-contact/
 Description: Uix Contact allowing user to change different receiving messages options with the WordPress theme customizer and take advantage of built-in contact form.
 Author: UIUX Lab
 Author URI: https://uiux.cc
-Version: 1.0.0
+Version: 1.0.1
 Text Domain: uix-contact
 License: GPLv2 or later
 */
@@ -288,31 +288,12 @@ class UixContact {
 		  
 		 
 		  if( $currentScreen->id == 'page' ) {
-			  add_action( 'admin_notices', array( __CLASS__, 'usage_notice_app' ) );
 			  add_action( 'admin_notices', array( __CLASS__, 'template_notice_required' ) );
 		  }
 		
 	
 	}	
 	
-	public static function usage_notice_app() {
-		
-		global $current_user ;
-		$user_id = $current_user->ID;
-		
-		/* Check that the user hasn't already clicked to ignore the message */
-		if ( ! get_user_meta( $user_id, self::NOTICEID ) ) {
-			echo '<div class="updated"><p>
-				'.__( 'Do you want to create a custom contact page?  Learn how to do it.', 'uix-contact' ).'
-				<a href="' . admin_url( "admin.php?page=".self::HELPER."&tab=usage" ) . '">' . __( 'How to use?', 'uix-contact' ) . '</a>
-				 | 
-			';
-			printf( __( '<a href="%1$s">Hide Notice</a>' ), '?post_type='.self::get_slug().'&'.self::NOTICEID.'=0');
-			
-			echo "</p></div>";
-		}
-	
-	}	
 	
 	public static function template_notice_required() {
 		
