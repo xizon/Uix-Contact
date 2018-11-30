@@ -5,7 +5,7 @@ Plugin URI: https://uiux.cc/wp-plugins/uix-contact/
 Description: Uix Contact allowing user to change different receiving messages options with the WordPress theme customizer and take advantage of built-in contact form.
 Author: UIUX Lab
 Author URI: https://uiux.cc
-Version: 1.0.1
+Version: 1.0.2
 Text Domain: uix-contact
 License: GPLv2 or later
 */

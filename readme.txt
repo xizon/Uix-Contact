@@ -4,8 +4,8 @@ Author URI: https://uiux.cc
 Plugin URL: https://uiux.cc/wp-plugins/uix-contact/
 Tags: contact, php contact form, SMTP, phpMailer, mailer
 Requires at least: 4.2
-Tested up to: 4.5
-Stable tag: 1.0.1
+Tested up to: 4.9.8
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,11 @@ There are three different ways you can add the Uix Contact widget to your site's
 
 
 == Changelog ==
+
+= 1.0.2 (November 30, 2018) =
+
+* Fix: Solved some problems under PHP7 and Gutenberg.
+
 
 = 1.0.0 =
 *Release Date - 1st February, 2016*
